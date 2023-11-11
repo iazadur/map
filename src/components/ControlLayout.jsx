@@ -45,11 +45,11 @@ function ControlLayout({ children }) {
             {!isFullScreen ? (
                 <Grid container spacing={2}>
                     {/* SearchContainer is displayed only on medium and larger screens */}
-                    <Grid item xs={12} md={4} display={{ xs: 'none', md: 'block' }}>
+                    <Grid item xs={12} md={5} display={{ xs: 'none', md: 'block' }}>
                         <SearchContainer />
                     </Grid>
                     {/* Children are always displayed */}
-                    <Grid item xs={12} md={8}>
+                    <Grid item xs={12} md={7}>
                         {children}
                     </Grid>
                 </Grid>
