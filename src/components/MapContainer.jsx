@@ -1,14 +1,22 @@
 "use client"
-import React, { useState, useEffect } from 'react'
 
+// Import necessary modules
+import React, { useState, useEffect } from 'react';
+
+// MapContainer component
+// It ensures that its children are only rendered on the client side
 function MapContainer({ children }) {
-    const [isClient, setIsClient] = useState(false)
+    // State to track if the component is being rendered on the client side
+    const [isClient, setIsClient] = useState(false);
 
+    // Set isClient to true after the component is mounted
     useEffect(() => {
-        setIsClient(true)
-    }, [])
+        setIsClient(true);
+    }, []); // Empty dependency array ensures this runs only on mount and not on updates
 
-    return <>{isClient ? children : null}</>
+    // Render children if on the client side, otherwise render null
+    return <>{isClient ? children : null}</>;
 }
 
-export default MapContainer
+// Export the component
+export default MapContainer;

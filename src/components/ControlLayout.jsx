@@ -1,29 +1,40 @@
 'use client'
 // Import necessary modules and components
-import { Box, Grid } from '@mui/material'
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import SearchContainer from './SearchContainer'
+import { Box, Grid } from '@mui/material';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import SearchContainer from './SearchContainer';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import { setFullScreen } from '@/redux/site/siteSlice'
-import Input from './Input'
+import { setFullScreen } from '@/redux/site/siteSlice';
+import Input from './Input';
 
-// Define ControlLayout component
+/**
+ * ControlLayout component
+ * This component is responsible for controlling the layout of the application.
+ * It checks if the application is in full screen mode and adjusts the layout accordingly.
+ * 
+ * @param {Object} props - The properties passed to this component.
+ * @param {React.ReactNode} props.children - The child components to be rendered within this layout.
+ */
 function ControlLayout({ children }) {
     // Get isFullScreen from Redux state
-    const { isFullScreen } = useSelector(state => state.site)
+    const { isFullScreen } = useSelector(state => state.site);
 
     // Get dispatch function from Redux
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
-    // Define function to dispatch setFullScreen action to Redux store
+    /**
+     * handleFullScreen function
+     * This function dispatches an action to the Redux store to exit full screen mode.
+     */
     const handleFullScreen = () => {
-        dispatch(setFullScreen(false))
-    }
+        dispatch(setFullScreen(false));
+    };
 
     // Return the component JSX
     return (
         <>
+            {/* Input component is displayed only on small screens */}
             <Box display={{ xs: 'block', md: 'none' }}
                 sx={{ position: 'fixed', top: '50px', left: 0, right: 0, width: '100%', zIndex: '9999' }}
             >
@@ -33,9 +44,11 @@ function ControlLayout({ children }) {
             {/* If not in full screen mode, display SearchContainer and children in a grid */}
             {!isFullScreen ? (
                 <Grid container spacing={2}>
+                    {/* SearchContainer is displayed only on medium and larger screens */}
                     <Grid item xs={12} md={4} display={{ xs: 'none', md: 'block' }}>
                         <SearchContainer />
                     </Grid>
+                    {/* Children are always displayed */}
                     <Grid item xs={12} md={8}>
                         {children}
                     </Grid>
@@ -60,8 +73,8 @@ function ControlLayout({ children }) {
                 </>
             )}
         </>
-    )
+    );
 }
 
 // Export ControlLayout component
-export default ControlLayout
+export default ControlLayout;

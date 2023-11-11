@@ -1,16 +1,19 @@
-import React from 'react'
-import { Box, IconButton, Typography } from '@mui/material'
-import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+// Import necessary modules and components
+import React from 'react';
 import Input from './Input';
 import SearchHeader from './SearchHeader';
 
+// SearchContainer component
+// It renders the SearchHeader and Input components
 function SearchContainer() {
+    // Render the component
     return (
         <>
-            <SearchHeader />
-            <Input />
+            <SearchHeader /> {/* Search header */}
+            <Input /> {/* Input field */}
         </>
-    )
+    );
 }
 
-export default SearchContainer
+// Export the component
+export default SearchContainer;

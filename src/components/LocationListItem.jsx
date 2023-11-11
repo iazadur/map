@@ -1,26 +1,32 @@
-'use client'// Import necessary modules and components
-import { Stack, Typography } from '@mui/material'
+'use client'
+
+// Import necessary modules and components
+import React from 'react';
+import { Stack, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import React from 'react'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux';
 import { setSelectedLocation } from '@/redux/location/locationSlice';
 
-// Define LocationListItem component
+// LocationListItem component
+// It receives a data prop and displays the location details
 function LocationListItem({ data }) {
-    const theme = useTheme();
-    // Get dispatch function from Redux
-    const dispatch = useDispatch()
+    const theme = useTheme(); // Get the current theme
+    const dispatch = useDispatch(); // Get the dispatch function from Redux
 
-    // Define function to dispatch selected location to Redux store
-    const setLocation = (select) => {
-        dispatch(setSelectedLocation(select))
-    }
+    // Function to dispatch the selected location to the Redux store
+    const setLocation = (selectedLocation) => {
+        dispatch(setSelectedLocation(selectedLocation));
+    };
 
-    // Return the component JSX
+    // Render the component
     return (
-        // Stack component acts as a list item (li) and sets the selected location on click
-        <Stack onClick={() => setLocation(data)} component={'li'} direction={'row'} gap={1} alignItems={'center'}
+        <Stack
+            component={'li'}
+            direction={'row'}
+            gap={1}
+            alignItems={'center'}
+            onClick={() => setLocation(data)} // Set the selected location on click
             sx={{
                 py: '10px',
                 borderBottom: '1px solid #00000020',
@@ -32,21 +38,19 @@ function LocationListItem({ data }) {
         >
             <LocationOnIcon /> {/* Location icon */}
             <Stack direction={'column'}>
-                {/* Display area, address, and city of the location */}
-                <Typography variant="body1" fontSize={'18px'} >{data?.area}</Typography>
-                <Typography variant="body1" fontSize={'16px'} >{data?.address}</Typography>
+                <Typography variant="body1" fontSize={'18px'}>{data?.area}</Typography> {/* Display area */}
+                <Typography variant="body1" fontSize={'16px'}>{data?.address}</Typography> {/* Display address */}
                 <Typography variant="body1" fontSize={'12px'} color={theme.palette.grey[600]}>
                     <Typography component={'span'} fontSize={'12px'} bgcolor={"#00000015"}>Thana:</Typography> {data?.area},{" "}
                     <Typography component={'span'} fontSize={'12px'} bgcolor={"#00000015"}>District:</Typography> {data?.city}
-                </Typography>
+                </Typography> {/* Display thana and district */}
                 <Stack direction={'row'}>
-                    {/* Display property type */}
                     <Typography color={theme.palette.grey[600]} component={'p'} fontSize={'12px'} bgcolor={"#00000015"} p={"1px"}>{data?.pType}</Typography>
-                </Stack>
+                </Stack> {/* Display property type */}
             </Stack>
         </Stack>
-    )
+    );
 }
 
-// Export LocationListItem component
-export default LocationListItem
+// Export the component
+export default LocationListItem;
