@@ -47,7 +47,7 @@ function MapBox() {
             const newCenter = [latitude, longitude];
             map.setView(newCenter, zoom);
         }
-    }, [map, selectedLocation, zoom]);
+    }, [map, selectedLocation?.area, zoom]);
 
     return (
         <div>
