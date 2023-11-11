@@ -1,15 +1,14 @@
-'use client'
-import React from 'react'
+"use client"
+import React, { useState, useEffect } from 'react'
 
 function MapContainer({ children }) {
-    // Return the component JSX when window is available
-    if (typeof window !== 'undefined') {
-        return (
-            <>{children}</>
-        )
-    }else{
-        return null
-    }
+    const [isClient, setIsClient] = useState(false)
+
+    useEffect(() => {
+        setIsClient(true)
+    }, [])
+
+    return <>{isClient ? children : null}</>
 }
 
 export default MapContainer

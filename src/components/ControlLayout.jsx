@@ -26,10 +26,10 @@ function ControlLayout({ children }) {
             {/* If not in full screen mode, display SearchContainer and children in a grid */}
             {!isFullScreen ? (
                 <Grid container spacing={2}>
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} md={4}>
                         <SearchContainer />
                     </Grid>
-                    <Grid item bgcolor={'black'} xs={12} md={6}>
+                    <Grid item xs={12} md={8}>
                         {children}
                     </Grid>
                 </Grid>
@@ -40,13 +40,13 @@ function ControlLayout({ children }) {
                         onClick={handleFullScreen}
                         sx={{
                             position: 'fixed',
-                            top: '50px',
+                            top: '40px',
                             left: '10px',
                             transform: 'translateY(-50%)',
                             zIndex: '9999',
                             color: '#000',
                             cursor: 'pointer',
-                            p: 2
+                            m: 1
                         }}
                     />
                     {children}
