@@ -1,6 +1,20 @@
 'use client'
 import React, { useState, useEffect, useMemo } from 'react'
+// import dynamic from 'next/dynamic'
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
+// const MapContainer = dynamic(() => import('react-leaflet').then((module) => module.MapContainer), {
+//     ssr: false,
+// });
+
+// const TileLayer = dynamic(() => import('react-leaflet').then((module) => module.TileLayer), {
+//     ssr: false,
+// });
+// const Marker = dynamic(() => import('react-leaflet').then((module) => module.Marker), {
+//     ssr: false,
+// });
+// const Popup = dynamic(() => import('react-leaflet').then((module) => module.Popup), {
+//     ssr: false,
+// });
 import 'leaflet/dist/leaflet.css'
 import { useSelector } from 'react-redux'
 import { Typography } from '@mui/material'
