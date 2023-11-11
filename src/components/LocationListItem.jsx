@@ -1,5 +1,6 @@
 'use client'// Import necessary modules and components
 import { Stack, Typography } from '@mui/material'
+import { useTheme } from '@mui/material/styles';
 import React from 'react'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { useDispatch } from 'react-redux'
@@ -7,6 +8,7 @@ import { setSelectedLocation } from '@/redux/location/locationSlice';
 
 // Define LocationListItem component
 function LocationListItem({ data }) {
+    const theme = useTheme();
     // Get dispatch function from Redux
     const dispatch = useDispatch()
 
@@ -31,15 +33,15 @@ function LocationListItem({ data }) {
             <LocationOnIcon /> {/* Location icon */}
             <Stack direction={'column'}>
                 {/* Display area, address, and city of the location */}
-                <Typography variant="body1" fontSize={'18px'}>{data?.area}</Typography>
-                <Typography variant="body1" fontSize={'16px'}>{data?.address}</Typography>
-                <Typography variant="body1" fontSize={'12px'} color={"#00000080"}>
+                <Typography variant="body1" fontSize={'18px'} >{data?.area}</Typography>
+                <Typography variant="body1" fontSize={'16px'} >{data?.address}</Typography>
+                <Typography variant="body1" fontSize={'12px'} color={theme.palette.grey[600]}>
                     <Typography component={'span'} fontSize={'12px'} bgcolor={"#00000015"}>Thana:</Typography> {data?.area},{" "}
                     <Typography component={'span'} fontSize={'12px'} bgcolor={"#00000015"}>District:</Typography> {data?.city}
                 </Typography>
                 <Stack direction={'row'}>
                     {/* Display property type */}
-                    <Typography color={"#00000080"} component={'p'} fontSize={'12px'} bgcolor={"#00000015"} p={"1px"}>{data?.pType}</Typography>
+                    <Typography color={theme.palette.grey[600]} component={'p'} fontSize={'12px'} bgcolor={"#00000015"} p={"1px"}>{data?.pType}</Typography>
                 </Stack>
             </Stack>
         </Stack>

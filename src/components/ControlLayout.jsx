@@ -1,11 +1,12 @@
 'use client'
 // Import necessary modules and components
-import { Grid } from '@mui/material'
+import { Box, Grid } from '@mui/material'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import SearchContainer from './SearchContainer'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { setFullScreen } from '@/redux/site/siteSlice'
+import Input from './Input'
 
 // Define ControlLayout component
 function ControlLayout({ children }) {
@@ -23,10 +24,16 @@ function ControlLayout({ children }) {
     // Return the component JSX
     return (
         <>
+            <Box display={{ xs: 'block', md: 'none' }}
+                sx={{ position: 'fixed', top: '50px', left: 0, right: 0, width: '100%', zIndex: '9999' }}
+            >
+                <Input />
+            </Box>
+
             {/* If not in full screen mode, display SearchContainer and children in a grid */}
             {!isFullScreen ? (
                 <Grid container spacing={2}>
-                    <Grid item xs={12} md={4}>
+                    <Grid item xs={12} md={4} display={{ xs: 'none', md: 'block' }}>
                         <SearchContainer />
                     </Grid>
                     <Grid item xs={12} md={8}>
