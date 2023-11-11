@@ -1,11 +1,13 @@
 const Meta = () => {
     return (
         <>
-            <link rel="icon" type="image/x-icon" href="/favicon.ico"></link>
-            <link rel="canonical" href="https://www.iazadur.com/"></link>
-            <link rel="pingback" href="https://www.iazadur.com/"></link>
-
-            <title> MD Azadur Rahman : iazadur </title>
+            <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+            <link rel="canonical" href="https://iazadur.online/"></link>
+            <link rel="pingback" href="https://iazadur.online/"></link>
+            <link rel="alternate" href="https://iazadur.online/" hreflang="en-us" />
+            <link rel="alternate" href="https://iazadur.online/" hreflang="x-default" />
+            <link rel="alternate" href="https://iazadur.online/" hreflang="en-bd" />
+            <title> MD Azadur Rahman | iazadur </title>
 
             <meta name="description" content='Highly motivated and very passionate Full Stack Developer with three years of experience in Typescript, React js, Next js, Firebase, Tailwind CSS, Material UI, Node js, Express js, MongoDB' />
             <meta
